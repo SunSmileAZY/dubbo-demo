@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	      http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	 http://code.alibabatech.com/schema/dubbo
+	 http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--全局配置-->
+    <dubbo:provider timeout="3000" />
+    <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
+    <dubbo:application name="xml-server" />
+    <!-- 使用本地zookeeper作为注册中心 -->
+    <dubbo:registry address="zookeeper://47.93.206.149:20181" />
+
+    <!--name指示使用什么协议监听端口：dubbo/rmi/rest-->
+    <dubbo:protocol  name="dubbo" port="20882" />
+
+    <!-- 通过xml方式配置为bean, 让spring托管和实例化 -->
+    <bean id="userService" class="com.pine.service.provider.UserServiceImpl"/>
+    <!-- 声明服务暴露的接口，并暴露服务 -->
+    <dubbo:service interface="com.pine.service.provider.UserService" ref="userService"  />
+</beans>
