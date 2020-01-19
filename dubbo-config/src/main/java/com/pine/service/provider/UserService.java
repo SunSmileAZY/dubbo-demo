@@ -1,4 +1,4 @@
-package com.pine.service;
+package com.pine.service.provider;
 
 public interface UserService {
 

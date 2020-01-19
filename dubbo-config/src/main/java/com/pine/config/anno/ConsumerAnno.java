@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ConsumerConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
-import com.pine.dubbo.ConsumerUserServiceImpl;
+import com.pine.service.consumer.ConsumerUserServiceImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,8 +27,8 @@ public class ConsumerAnno {
     }
 
     @Configuration
-    @EnableDubbo(scanBasePackages = "com.pine.dubbo")
-    @ComponentScan(value = {"com.pine.dubbo"})
+    @EnableDubbo(scanBasePackages = "com.pine.service.consumer")
+    @ComponentScan(value = {"com.pine.service.consumer"})
     static class ConsumerConfiguration {
         @Bean
         public ApplicationConfig applicationConfig() {
